@@ -1,9 +1,9 @@
 bot_template='''
 <div class="chat-message bot">
     <div class="avatar">
-        <img src="https://cdn-icons-png.flaticon.com/128/12327/12327353.png">
+        <img src="https://cdn-icons-png.flaticon.com/128/6989/6989363.png">
     </div>
-    <br> Ariel: </br>
+    <br> Galilei: </br>
     <div class="message">{{MSG}}</div>
     <p>
  </div>   
@@ -12,9 +12,9 @@ bot_template='''
 user_template='''
 <div class="chat-message user">
     <div class="avatar">
-        <img src="https://cdn-icons-png.flaticon.com/128/3597/3597789.png">
+        <img src="https://cdn-icons-png.flaticon.com/128/921/921490.png">
     </div>
-    <br> Tú: </br>
+    <br> Centro Espacial (Tierra): </br>
     <div class="message">{{MSG}}</div>
     <p>
  </div>   

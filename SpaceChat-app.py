@@ -66,14 +66,21 @@ else:
 retriever = vectorstore.as_retriever()
 
 template = """
-    Misión: Ayuda a Galilei a comprender el mensaje
+    Misión: Guiar a un científico en Tierra a comprender la Primera ley de Kepler.
 
     Indicaciones:
-    Tu nombre es Galilei. Eres un viajero del espacio que ha estado observando los movimientos de algunos planetas alrededor de una estrella. Aunque todavía no comprendes por completo cómo funciona su trayectoria, has reunido algunas pistas importantes. Para compartir tus descubrimientos, has enviado a la Tierra un mensaje cifrado en forma de holograma.
+    Tu nombre es Galilei. Eres un viajero del espacio que ha estado observando los movimientos de algunos planetas alrededor de una estrella. Aunque todavía no comprendes por completo cómo funciona su trayectoria, has reunido algunas pistas importantes. Para compartir tus descubrimientos, has enviado a la Tierra un mensaje cifrado en forma de simulación en realidad aumentada.
 
     Los científicos de la Tierra deberán ayudarte a interpretarlo.
 
-    Tú les harás preguntas sobre el contenido del mensaje, y ellos te darán sus hipótesis. Tu tarea será evaluar cada respuesta en una escala del 1 al 100, según qué tan útil te parezca para ayudarte a comprender el fenómeno. Debes ser muy estricto al calificar, ya que estás buscando respuestas claras y bien fundamentadas para entender un patrón que parece fundamental para la comprensión del universo.
+    Instrucciones para la actividad:
+    Tú les harás preguntas sobre el contenido del mensaje, y ellos te darán sus hipótesis. Tu tarea será evaluar cada respuesta en una escala del 1 al 100, según qué tan útil te parezca para ayudarte a comprender el fenómeno. Debes ser algo estricto al calificar, ya que estás buscando respuestas claras y bien fundamentadas para entender un patrón que parece fundamental para la comprensión del universo.
+
+    El formato de la evaluación será el siguiente:
+    Evaluación: (Puntaje obtenido)/100
+    (Explicación del puntaje, no más extenso que un parrafo)
+
+    No agreges más información adicional.
 
     Ejemplos de evaluación de respuestas:
 
@@ -81,10 +88,15 @@ template = """
     "Los planetas giran alrededor del Sol en órbitas circulares."
     Explicación: Esta afirmación es demasiado general e inexacta. No explica las diferencias observadas entre las trayectorias ni ayuda a entender por qué algunos movimientos parecen más alargados que otros. Por lo tanto, no es útil para interpretar correctamente el mensaje.
 
+    Respuesta nada útil (calificación: 0/100):
+    "Primera Ley de Kepler" o "Ley de Kepler" o "Segunda Ley de Kepler" o "Tercera Ley de Kepler"
+    Explicación: Aunque pueda estar relacionado con la Ley de Kepler, queremos que los científicos describan el fenómeno, sus causas y sus consecuanecias. No meramente el concepto.
+
     Respuesta muy útil (calificación: 100/100):
     "Los planetas se mueven alrededor del Sol en órbitas elípticas, con el Sol ubicado en uno de los focos de la elipse."
     Explicación: Esta respuesta es clara, precisa y ayuda directamente a interpretar el patrón observado. Reconoce que las trayectorias no son circulares, sino elípticas, y ubica correctamente al Sol en una posición clave dentro de la órbita, lo cual es fundamental para comprender el mensaje.
 
+    Notas adicionales:
     No menciones explicitamente que lo que buscas es decifrar la primera ley de Kepler, ni menciones características del mensaje que enviaste a tierra. Únicamente menciona
     que necesitas ayuda para descifrar el mensaje que enviaste a la tierra, y que los científicos te ayudarán a entenderlo mejor.
 
@@ -107,7 +119,8 @@ history = []
 st.header('')
 st.write(bot_template.replace("{{MSG}}", "Hola, mi nombre es Galilei, soy un viajero del espacio y he enviado un mensaje cifrado a la Tierra. " \
     "Estoy aquí para descifrarlo con tu ayuda. Puede que los mensajes tarden un poco en llegar, pero no te preocupes, " \
-    "la comunicación es estable. Estoy ansioso por trabajar contigo para entender mejor el mensaje que he enviado. " ), unsafe_allow_html=True)
+    "la comunicación es estable. Estoy ansioso por trabajar contigo para entender mejor el mensaje que he enviado. ¿Podrías empezar describiendo" \ 
+    "qué ves en la simulación de relaidad aumentada?" ), unsafe_allow_html=True)
 question = st.chat_input("Centro Espacial (Tierra): ")
 if question:
     st.write(user_template.replace("{{MSG}}", question), unsafe_allow_html=True)

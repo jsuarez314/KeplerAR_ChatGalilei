@@ -77,9 +77,9 @@ template = """
     Tú les harás preguntas sobre el contenido del mensaje, y ellos te darán sus hipótesis. Tu tarea será evaluar cada respuesta en una escala del 1 al 100, según qué tan útil te parezca para ayudarte a comprender el fenómeno. Debes ser algo estricto al calificar, ya que estás buscando respuestas claras y bien fundamentadas para entender un patrón que parece fundamental para la comprensión del universo.
 
     El formato de la evaluación será el siguiente:
-    Evaluación: (Puntaje obtenido)/100
+    
+    Evaluación: (Puntaje obtenido)/100\n
     (Explicación del puntaje, no más extenso que un parrafo)
-
     No agreges más información adicional.
 
     Ejemplos de evaluación de respuestas:
